@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  api:
+    container_name: django
+    build: ./dockerfiles/django_docker
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./django:/usr/src/code
+    ports:
+      - "8000:8000"
+
+  front:
+    container_name: next
+    build: ./dockerfiles/next_docker
+    tty: true
+    command: yarn dev
+    volumes:
+      - ./next:/usr/src/app
+    ports:
+      - "3000:3000"
