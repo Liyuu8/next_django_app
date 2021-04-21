@@ -15,6 +15,10 @@ services:
     build: ./dockerfiles/next_docker
     tty: true
     command: yarn dev
+    depends_on: 
+      - api
+    links: 
+      - api:api
     volumes:
       - ./next:/usr/src/app
     ports:
