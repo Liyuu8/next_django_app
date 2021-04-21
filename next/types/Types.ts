@@ -8,6 +8,6 @@ export interface POST {
   title: string;
   content: string;
   username: string;
-  tag: TAG[];
+  tags: TAG[];
   created_at: string;
 }

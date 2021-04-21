@@ -15,7 +15,7 @@ export const getAllPostIds = async () => {
   return posts.map((post) => ({ params: { id: String(post.id) } }));
 };
 
-export const getPostData = async (id: number) => {
+export const getPostData = async (id: string) => {
   const response = await fetch(new URL(`${ENDPOINT}/get-blogs/${id}`));
   const post = await response.json();
 
@@ -23,6 +23,11 @@ export const getPostData = async (id: number) => {
 };
 
 export const deletePostData = async (id: number, token: string) => {
-  const response = await fetch(new URL(`${ENDPOINT}/delete-blog/${id}`));
+  const response = await fetch(new URL(`${ENDPOINT}/delete-blog/${id}`), {
+    method: 'DELETE',
+    headers: {
+      Authorization: `JWT ${token}`,
+    },
+  });
   if (response.status === 401) alert('JWT Token not valid ');
 };
