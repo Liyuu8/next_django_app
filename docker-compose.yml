@@ -14,10 +14,10 @@ services:
     container_name: next
     build: ./dockerfiles/next_docker
     tty: true
-    command: yarn dev
-    depends_on: 
+    command: npm run dev
+    depends_on:
       - api
-    links: 
+    links:
       - api:api
     volumes:
       - ./next:/usr/src/app

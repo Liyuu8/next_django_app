@@ -1,9 +1,12 @@
-import fetch from 'node-fetch';
+import * as nFetch from 'node-fetch';
 
-export const ENDPOINT = process.env.NEXT_PUBLIC_RESTAPI_URL;
+const PRIVATE_ENDPOINT = process.env.NEXT_PRIVATE_RESTAPI_URL;
+const PUBLIC_ENDPOINT = process.env.NEXT_PUBLIC_RESTAPI_URL;
 
 export const getAllPostsData = async () => {
-  const response = await fetch(new URL(`${ENDPOINT}/get-blogs`));
+  const response = await nFetch.default(
+    new URL(`${PRIVATE_ENDPOINT}/get-blogs`)
+  );
   const posts = await response.json();
 
   return posts;
@@ -16,14 +19,16 @@ export const getAllPostIds = async () => {
 };
 
 export const getPostData = async (id: string) => {
-  const response = await fetch(new URL(`${ENDPOINT}/get-blogs/${id}`));
+  const response = await nFetch.default(
+    new URL(`${PRIVATE_ENDPOINT}/get-blogs/${id}`)
+  );
   const post = await response.json();
 
   return post;
 };
 
 export const deletePostData = async (id: number, token: string) => {
-  const response = await fetch(new URL(`${ENDPOINT}/delete-blog/${id}`), {
+  const response = await fetch(`${PUBLIC_ENDPOINT}/delete-blog/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `JWT ${token}`,

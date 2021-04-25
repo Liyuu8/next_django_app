@@ -26,7 +26,7 @@ SECRET_KEY = '%j^2$93o*fqtdko$afh3n9c+yoj=7^6(^2)jwg^g2q-r@i_7v8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api']
+ALLOWED_HOSTS = ['localhost', 'api']
 
 
 # Application definition

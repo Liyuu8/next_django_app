@@ -41,7 +41,7 @@ const PostDetail: React.FC<POST> = ({
     <p className="mx-10 mb-12">{content}</p>
     <p>{created_at}</p>
     <p className="mt-3">{`by ${username}`}</p>
-    <Link href="">
+    <Link href="/">
       <div className="flex cursor-pointer mt-12">
         <svg
           xmlns="http://www.w3.org/2000/svg"

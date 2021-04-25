@@ -13,7 +13,7 @@ interface NAV_ITEMS {
 
 const Layout: React.FC<TITLE> = ({ children, title = 'Nextjs' }) => {
   const navItems: NAV_ITEMS[] = [
-    { id: 'blog', href: '/blog-page', title: 'Blog' },
+    { id: 'blog', href: '/', title: 'Blog' },
     { id: 'admin', href: '/admin-page', title: 'Admin' },
   ];
 

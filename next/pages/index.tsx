@@ -5,10 +5,10 @@ import Cookie from 'universal-cookie';
 
 import Layout from '../components/Layout';
 import { getAllPostsData, deletePostData } from '../lib/fetch';
+import { COOKIE_KEY, logout } from '../lib/auth';
 import { POST } from '../types/Types';
 
 const cookie = new Cookie();
-const COOKIE_KEY = 'access_token';
 
 interface STATIC_PROPS {
   posts: POST[];
@@ -17,11 +17,6 @@ interface STATIC_PROPS {
 const BlogPage: React.FC<STATIC_PROPS> = ({ posts }) => {
   const [hasToken, setHasToken] = useState(false);
   useEffect(() => cookie.get(COOKIE_KEY) && setHasToken(true), []);
-
-  const logout = () => {
-    cookie.remove(COOKIE_KEY);
-    setHasToken(false);
-  };
 
   return (
     <Layout title="Blog">
@@ -60,7 +55,7 @@ const BlogPage: React.FC<STATIC_PROPS> = ({ posts }) => {
       </ul>
       {hasToken && (
         <svg
-          onClick={logout}
+          onClick={() => logout(cookie, () => setHasToken(false))}
           data-testid="logout-icon"
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6 mt-10 cursor-pointer"
