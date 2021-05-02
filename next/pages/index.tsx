@@ -35,7 +35,7 @@ const BlogPage: React.FC<STATIC_PROPS> = ({ posts }) => {
                   onClick={() =>
                     deletePostData(post.id, cookie.get(COOKIE_KEY))
                   }
-                  data-testid={`btn-${post.id}`}
+                  data-testid={`delete-post${post.id}-btn`}
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6 ml-10 float-right cursor-pointer"
                   fill="none"
