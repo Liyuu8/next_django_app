@@ -8,7 +8,6 @@ interface AUTH_INFO {
   isLogin: boolean;
 }
 
-const ENDPOINT = process.env.NEXT_PUBLIC_RESTAPI_URL;
 export const COOKIE_KEY = 'access_token';
 
 const signup = async (authInfo: AUTH_INFO, errorHandle: Function) => {
@@ -16,10 +15,11 @@ const signup = async (authInfo: AUTH_INFO, errorHandle: Function) => {
 
   try {
     const res = await axios.post(
-      `${ENDPOINT}/register/`,
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}/register/`,
       { username, password },
       { headers: { 'Content-Type': 'application/json' } }
     );
+
     if (res.status === 201) return await login(authInfo, errorHandle);
   } catch (e) {
     errorHandle(e);
@@ -32,7 +32,7 @@ const login = async (authInfo: AUTH_INFO, errorHandle: Function) => {
 
   try {
     const res = await axios.post(
-      `${ENDPOINT}/jwt/create/`,
+      `${process.env.NEXT_PUBLIC_RESTAPI_URL}/jwt/create/`,
       { username, password },
       { headers: { 'Content-Type': 'application/json' } }
     );

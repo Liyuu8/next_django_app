@@ -66,7 +66,7 @@ const Auth: React.FC = () => {
             disabled={!username || !password}
             className="disabled:opacity-40 py-2 px-4 text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
           >
-            {isLogin ? 'Login' : 'Sign Up'}
+            {isLogin ? 'Login with JWT' : 'Create new user'}
           </button>
         </div>
       </form>
